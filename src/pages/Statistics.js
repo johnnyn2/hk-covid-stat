@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import loadingGif from '../img/loading.gif';
 import {STAT_URLS, STAT_TITLE} from '../constants/constants';
 import {csv} from 'd3-fetch';
 import latest from '../csv/latest_situation_of_reported_cases_covid_19_chi.csv';
@@ -29,6 +30,7 @@ export const Statisitcs = (props) => {
         data: null,
         title: '',
     }
+    const [isLoading, setIsLoading] = useState(false);
     const [state, setState] = useState(initState);
     useEffect(() => {
         let url = '';
@@ -39,15 +41,18 @@ export const Statisitcs = (props) => {
             case STAT_URLS.BUILDINGS: url = buildings; title = STAT_TITLE.BUILDINGS; break;
             case STAT_URLS.CONFINEES_BUILDINGS: url = confiness; title = STAT_TITLE.CONFINEES_BUILDINGS; break;
         }
+        setIsLoading(true);
         csv(url).then(csvData => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
             console.log('data: ', data);
             console.log('columns: ', columns);
-            setState((prevState) => ({...prevState, data, columns, title,}))
+            setState((prevState) => ({...prevState, data, columns, title,}));
+            setIsLoading(false);
         })
     },[])
     return (
+        isLoading ? <img src={loadingGif}/> :
         state.data !== null && state.col !== null ?
             <MaterialTable
             title={state.title}
