@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -66,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const CustomAppBar = (props) => {
+  const [date, setDate] = useState(new Date())
+  
   const classes = useStyles();
-
-
 
   const handleChangePage = (currentPage) => {
       props.setCurrentPage((prevState) => ({
@@ -82,7 +81,7 @@ export const CustomAppBar = (props) => {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            香港新冠肺炎數據庫
+            {`新冠肺炎疫情數據庫 本程式最後更新時間: ${date}`}
           </Typography>
           <Button color="inherit" onClick={() => handleChangePage(PAGES.MAIN)}>
             主頁
