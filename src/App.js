@@ -26,7 +26,9 @@ function App() {
   return (
     <div className="App">
       <CustomAppBar setCurrentPage={setState}/>
-      {content}
+      <div style={{marginTop: 74}}>
+        {content}
+      </div>
     </div>
   );
 }

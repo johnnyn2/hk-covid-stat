@@ -24,6 +24,8 @@ import ArrowDownward from "@material-ui/icons/ArrowDownward";
 
 import MaterialTable from 'material-table';
 
+import Paper from '@material-ui/core/Paper';
+
 export const Statisitcs = (props) => {
     const initState = {
         columns: null,
@@ -47,49 +49,72 @@ export const Statisitcs = (props) => {
             const columns = csvData.columns.map(col => ({title: col, field: col}));
             setState((prevState) => ({...prevState, data, columns, title,}));
             setIsLoading(false);
+            console.log('data: ', data);
+            console.log('columns: ', columns);
         })
     },[])
+    let result = <span/>;
+    if (state.data !== null && state.col !== null) {
+        result = (
+            <MaterialTable
+                title={<div style={{ display: 'flex' }}>{state.title}</div>}
+                columns={state.columns}
+                data={state.data}
+                localization={{
+                    pagination: {
+                        previousTooltip: '上一頁',
+                        previousAriaLabel: '上一頁',
+                        nextTooltip: '下一頁',
+                        nextAriaLabel: '下一頁',
+                        lastTooltip: '最後一頁',
+                        lastAriaLabel: '最後一頁',
+                        firstTooltip: '第一頁',
+                        firstAriaLabel: '第一頁',
+                        labelRowsSelect: '行',
+                        labelRowsPerPage: '行/頁'
+                    },
+                    toolbar: {
+                        searchTooltip: '搜尋',
+                        searchPlaceholder: '搜尋'
+                    },
+
+                }}
+                icons={{
+                    Check: Check,
+                    DetailPanel: ChevronRight,
+                    Export: SaveAlt,
+                    Filter: FilterList,
+                    FirstPage: FirstPage,
+                    LastPage: LastPage,
+                    NextPage: ChevronRight,
+                    PreviousPage: ChevronLeft,
+                    Search: Search,
+                    ThirdStateCheck: Remove,
+                    ViewColumn: ViewColumn,
+                    ResetSearch: Clear,
+                    SortArrow: ArrowDownward
+                }}
+            />
+        );
+    }
+    if (state.data !== null && state.columns !== null) {
+        result = state.data.map(row => {
+            const keys = Object.keys(row);
+            const tableContent = keys.map(k => <tr><td>{k}</td><td>{row[k]}</td></tr>)
+            return (
+            <div style={{backgroundColor: 'white', color: 'rgba(0, 0, 0, 0.87)', borderRadius: '10px', border: '1px solid #E7E7E7', margin: 10}}>
+                <table style={{width: 300, textAlign: 'left', padding: 30}}>
+                    <tbody>{tableContent}</tbody>
+                </table>
+            </div>
+        )})
+    }
     return (
         isLoading ? <img src={loadingGif}/> :
-        state.data !== null && state.col !== null ?
-            <MaterialTable
-            title={<div style={{display: 'flex'}}>{state.title}</div>}
-            columns={state.columns}
-            data={state.data}
-            localization={{
-                pagination: {
-                    previousTooltip: '上一頁',
-                    previousAriaLabel: '上一頁',
-                    nextTooltip: '下一頁',
-                    nextAriaLabel: '下一頁',
-                    lastTooltip: '最後一頁',
-                    lastAriaLabel: '最後一頁',
-                    firstTooltip: '第一頁',
-                    firstAriaLabel: '第一頁',
-                    labelRowsSelect: '行',
-                    labelRowsPerPage: '行/頁'
-                },
-                toolbar: {
-                    searchTooltip: '搜尋',
-                    searchPlaceholder: '搜尋'
-                },
-                
-            }}
-            icons={{ 
-                Check: Check,
-                DetailPanel: ChevronRight,
-                Export: SaveAlt,
-                Filter: FilterList,
-                FirstPage: FirstPage,
-                LastPage: LastPage,
-                NextPage: ChevronRight,
-                PreviousPage: ChevronLeft,
-                Search: Search,
-                ThirdStateCheck: Remove,
-                ViewColumn: ViewColumn,
-                ResetSearch: Clear,
-                SortArrow: ArrowDownward
-            }}
-        /> : <span/>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }}>{result}</div>
     );
 }

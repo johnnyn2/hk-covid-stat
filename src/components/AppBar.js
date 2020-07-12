@@ -78,7 +78,7 @@ export const CustomAppBar = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed" style={{height: 64}}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             {`新冠肺炎疫情數據庫 本程式最後更新時間: ${date}`}
