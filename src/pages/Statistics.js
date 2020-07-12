@@ -24,12 +24,15 @@ import MaterialTable from 'material-table';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { TextField, InputAdornment, IconButton } from '@material-ui/core';
 
 export const Statisitcs = (props) => {
     const initState = {
         columns: null,
         data: null,
         title: '',
+        searchKey: '',
+        filteredData: null,
     }
     const initSnackState = {
         open: false,
@@ -56,13 +59,52 @@ export const Statisitcs = (props) => {
         csv(url).then(csvData => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
-            setState((prevState) => ({...prevState, data, columns, title,}));
+            setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: '完成'}))
             console.log('data: ', data);
             console.log('columns: ', columns);
         })
     },[])
+
+    const handleSearch = () => {
+        const {searchKey} = state;
+        if (searchKey === "") {
+            handleReset();
+            return;
+        };
+        const searchResult = state.data.filter(row => {
+            const keys = Object.keys(row);
+            if (keys.includes(searchKey)) return true;
+            let contains = false;
+
+            const matchedKeys = keys.filter(key => {
+                console.log('compare: ', row[key], searchKey, row[key].includes(searchKey))
+                return row[key].includes(searchKey);
+            });
+            console.log('matchedKeys: ', matchedKeys);
+            return matchedKeys.length > 0;
+        })
+        setState((prevState) => ({...prevState, filteredData: searchResult,}));
+    }
+
+    const handleReset = () => {
+        setState((prevState) => ({...prevState, searchKey: '', filteredData: state.data}));
+    }
+
+    const handleInput = (e) => {
+        const searchKey = e.target.value;
+        setState((prevState) => ({...prevState, searchKey,}))
+    }
+
+    const handleGotoTop = () => {
+
+    }
+
+    const handleGotoBottom = () => {
+
+    }
+
     let result = <span/>;
     if (state.data !== null && state.col !== null) {
         result = (
@@ -107,8 +149,8 @@ export const Statisitcs = (props) => {
             />
         );
     }
-    if (state.data !== null && state.columns !== null) {
-        result = state.data.map((row, idx) => {
+    if (state.filteredData !== null && state.columns !== null) {
+        result = state.filteredData.map((row, idx) => {
             const keys = Object.keys(row);
             const tableContent = keys.map(k => <tr><td>{k}</td><td>{row[k]}</td></tr>)
             return (
@@ -131,7 +173,26 @@ export const Statisitcs = (props) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center'
-                }}>{result}</div>}
+                }}>
+                    <TextField
+                        placeholder="搜尋"
+                        value={state.searchKey}
+                        onChange={(e) => handleInput(e)}
+                        InputProps={{
+                            endAdornment: (
+                                <React.Fragment>
+                                    <IconButton onClick={() => handleSearch()}>
+                                        <Search/>
+                                    </IconButton>
+                                    <IconButton onClick={() => handleReset()}>
+                                        <Clear/>
+                                    </IconButton>
+                                </React.Fragment>
+                            )
+                        }}
+                    />
+                    {result}
+                </div>}
         </div>
     );
 }
