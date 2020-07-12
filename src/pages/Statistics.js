@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import loadingGif from '../img/loading.gif';
 import {STAT_URLS, STAT_TITLE} from '../constants/constants';
 import {csv} from 'd3-fetch';
@@ -19,12 +20,47 @@ import Check from '@material-ui/icons/Check'
 import FilterList from '@material-ui/icons/FilterList'
 import Remove from '@material-ui/icons/Remove'
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import Sort from '@material-ui/icons/Sort';
 
 import MaterialTable from 'material-table';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { TextField, InputAdornment, IconButton } from '@material-ui/core';
+
+import SpeedDial from '@material-ui/lab/SpeedDial';
+import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      transform: 'translateZ(0px)',
+      flexGrow: 1,
+    },
+    exampleWrapper: {
+      position: 'relative',
+      marginTop: theme.spacing(3),
+      height: 380,
+    },
+    radioGroup: {
+      margin: theme.spacing(1, 0),
+    },
+    speedDial: {
+      position: 'absolute',
+      '&.MuiSpeedDial-directionUp, &.MuiSpeedDial-directionLeft': {
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+      },
+      '&.MuiSpeedDial-directionDown, &.MuiSpeedDial-directionRight': {
+        top: theme.spacing(2),
+        left: theme.spacing(2),
+      },
+    },
+}));
 
 export const Statisitcs = (props) => {
     const initState = {
@@ -34,6 +70,7 @@ export const Statisitcs = (props) => {
         searchKey: '',
         filteredData: null,
     }
+    const initSortingState = {}
     const initSnackState = {
         open: false,
         severity: "info",
@@ -41,7 +78,11 @@ export const Statisitcs = (props) => {
     }
     const [isLoading, setIsLoading] = useState(false);
     const [snackState, setSnackState] = useState(initSnackState);
+    const [speedDialOpen, setSpeedDialOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
     const [state, setState] = useState(initState);
+    const [sortingState, setSortingState] = useState(initSortingState);
+    const classes = useStyles();
     const setOpenSnack = (open) => {
         setSnackState((prevSnack) => ({...prevSnack, open,}))
     }
@@ -60,6 +101,12 @@ export const Statisitcs = (props) => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
             setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
+            const sortingState = {};
+            Object.keys(csvData.columns).forEach(column => {
+                console.log('init:', column);
+                sortingState[columns[column].title] = 'ASC';
+            });
+            setSortingState(sortingState);
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: '完成'}))
             console.log('data: ', data);
@@ -103,6 +150,61 @@ export const Statisitcs = (props) => {
 
     const handleGotoBottom = () => {
 
+    }
+
+    const compareDate = (a,b, column, sort) => {
+        const aTimestamps = a[column].split('/');
+        const bTimestamps = b[column].split('/');
+        const aTime = new Date();
+        aTime.setDate(aTimestamps[0]);
+        aTime.setMonth(aTimestamps[1]);
+        aTime.setFullYear(aTimestamps[2]);
+        const bTime = new Date();
+        bTime.setDate(bTimestamps[0]);
+        bTime.setMonth(bTimestamps[1]);
+        bTime.setFullYear(bTimestamps[2]);
+        return sort === 'ASC' ? bTime.getTime() - aTime.getTime() : aTime.getTime() - bTime.getTime();
+    }
+
+    const letterSort = (lang, letters) => {
+        letters.sort(new Intl.Collator(lang).compare);
+        return letters;
+      }
+
+    const handleSort = (column) => {
+        console.log('handleSort: ', column, sortingState, sortingState[column]);
+        handleCloseMenu();
+        if (sortingState[column] === 'ASC') {
+            let sortedData = [];
+            if (column.includes('日期')) {
+                sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'ASC'))
+            } else if (/^\d+$/.test(state.filteredData[0][column])) {
+                sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
+            } else {
+                // sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
+                sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(b[column], a[column]));
+            }
+            console.log(sortedData);
+            setState((prevState) => ({...prevState, filteredData: sortedData}));
+            setSortingState((prevState) => ({...prevState, [column]: 'DES'}))
+        } else {
+            let sortedData = [];
+            if (column.includes('日期')) {
+                sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'DES'))
+            } else if (/^\d+$/.test(state.filteredData[0][column])) {
+                sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
+            } else {
+                // sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
+                sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(a[column], b[column]));
+            }
+            console.log(sortedData);
+            setState((prevState) => ({...prevState, filteredData: sortedData}));
+            setSortingState((prevState) => ({...prevState, [column]: 'ASC'}))
+        }
+    }
+
+    const handleCloseMenu = () => {
+        setAnchorEl(null);
     }
 
     let result = <span/>;
@@ -161,6 +263,12 @@ export const Statisitcs = (props) => {
             </div>
         )})
     }
+
+    const actions = [
+        { icon: <Sort />, name: '排序', action: (e) => setAnchorEl(e.currentTarget)},
+        { icon: <ArrowUpward />, name: '最上', action: (e) => handleGotoTop()},
+        { icon: <ArrowDownward />, name: '最下', action: (e) => handleGotoBottom()},
+    ];
     return (
         <div>
             <Snackbar open={snackState.open} autoHideDuration={6000} onClose={() => setOpenSnack(false)}>
@@ -168,7 +276,7 @@ export const Statisitcs = (props) => {
                     {snackState.message}
                 </Alert>
             </Snackbar>
-            {isLoading ? <img src={loadingGif}/> :
+            {isLoading ? <img src={loadingGif} /> :
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -182,16 +290,46 @@ export const Statisitcs = (props) => {
                             endAdornment: (
                                 <React.Fragment>
                                     <IconButton onClick={() => handleSearch()}>
-                                        <Search/>
+                                        <Search />
                                     </IconButton>
                                     <IconButton onClick={() => handleReset()}>
-                                        <Clear/>
+                                        <Clear />
                                     </IconButton>
                                 </React.Fragment>
                             )
                         }}
                     />
                     {result}
+                    <SpeedDial
+                        ariaLabel="sdsd"
+                        className={classes.speedDial}
+                        icon={<SpeedDialIcon />}
+                        onClick={() => setSpeedDialOpen(!speedDialOpen)}
+                        open={speedDialOpen}
+                        direction={'up'}
+                        style={{position: 'fixed'}}
+                    >
+                        {actions.map((action) => (
+                            <SpeedDialAction
+                                key={action.name}
+                                icon={action.icon}
+                                tooltipTitle={action.name}
+                                onClick={(e) => action.action(e)}
+                            />
+                        ))}
+                    </SpeedDial>
+                    <Menu
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={() => handleCloseMenu()}
+                    >
+                        {state.columns && state.columns.map(column => (
+                            <MenuItem onClick={() => handleSort(column.title)}>
+                                {`${column.title} (${sortingState[column] === 'ASC' ? '由大至小' : '由小至大'})`}
+                            </MenuItem>
+                        ))}
+                    </Menu>
                 </div>}
         </div>
     );
