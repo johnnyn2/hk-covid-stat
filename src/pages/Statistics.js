@@ -6,8 +6,6 @@ import latest from '../csv/latest_situation_of_reported_cases_covid_19_chi.csv';
 import cases from '../csv/enhanced_sur_covid_19_chi.csv';
 import buildings from '../csv/building_list_chi.csv';
 import confiness from '../csv/home_confinees_tier2_building_list.csv';
-import Tooltip from '@material-ui/core/Tooltip';
-import TablePagination from '@material-ui/core/TablePagination';
 
 import Clear from '@material-ui/icons/Clear';
 import Search from '@material-ui/icons/Search'
@@ -24,7 +22,8 @@ import ArrowDownward from "@material-ui/icons/ArrowDownward";
 
 import MaterialTable from 'material-table';
 
-import Paper from '@material-ui/core/Paper';
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 
 export const Statisitcs = (props) => {
     const initState = {
@@ -32,8 +31,17 @@ export const Statisitcs = (props) => {
         data: null,
         title: '',
     }
+    const initSnackState = {
+        open: false,
+        severity: "info",
+        message: ""
+    }
     const [isLoading, setIsLoading] = useState(false);
+    const [snackState, setSnackState] = useState(initSnackState);
     const [state, setState] = useState(initState);
+    const setOpenSnack = (open) => {
+        setSnackState((prevSnack) => ({...prevSnack, open,}))
+    }
     useEffect(() => {
         let url = '';
         let title = '';
@@ -44,11 +52,13 @@ export const Statisitcs = (props) => {
             case STAT_URLS.CONFINEES_BUILDINGS: url = confiness; title = STAT_TITLE.CONFINEES_BUILDINGS; break;
         }
         setIsLoading(true);
+        setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: '加載中...'}))
         csv(url).then(csvData => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
             setState((prevState) => ({...prevState, data, columns, title,}));
             setIsLoading(false);
+            setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: '完成'}))
             console.log('data: ', data);
             console.log('columns: ', columns);
         })
@@ -98,11 +108,11 @@ export const Statisitcs = (props) => {
         );
     }
     if (state.data !== null && state.columns !== null) {
-        result = state.data.map(row => {
+        result = state.data.map((row, idx) => {
             const keys = Object.keys(row);
             const tableContent = keys.map(k => <tr><td>{k}</td><td>{row[k]}</td></tr>)
             return (
-            <div style={{backgroundColor: 'white', color: 'rgba(0, 0, 0, 0.87)', borderRadius: '10px', border: '1px solid #E7E7E7', margin: 10}}>
+            <div key={idx} style={{backgroundColor: 'white', color: 'rgba(0, 0, 0, 0.87)', borderRadius: '10px', border: '1px solid #E7E7E7', margin: 10}}>
                 <table style={{width: 300, textAlign: 'left', padding: 30}}>
                     <tbody>{tableContent}</tbody>
                 </table>
@@ -110,11 +120,18 @@ export const Statisitcs = (props) => {
         )})
     }
     return (
-        isLoading ? <img src={loadingGif}/> :
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }}>{result}</div>
+        <div>
+            <Snackbar open={snackState.open} autoHideDuration={6000} onClose={() => setOpenSnack(false)}>
+                <Alert onClose={() => setOpenSnack(false)} severity={snackState.severity}>
+                    {snackState.message}
+                </Alert>
+            </Snackbar>
+            {isLoading ? <img src={loadingGif}/> :
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>{result}</div>}
+        </div>
     );
 }
