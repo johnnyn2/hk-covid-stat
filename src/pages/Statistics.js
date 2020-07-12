@@ -45,8 +45,6 @@ export const Statisitcs = (props) => {
         csv(url).then(csvData => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
-            console.log('data: ', data);
-            console.log('columns: ', columns);
             setState((prevState) => ({...prevState, data, columns, title,}));
             setIsLoading(false);
         })
@@ -55,7 +53,7 @@ export const Statisitcs = (props) => {
         isLoading ? <img src={loadingGif}/> :
         state.data !== null && state.col !== null ?
             <MaterialTable
-            title={state.title}
+            title={<div style={{display: 'flex'}}>{state.title}</div>}
             columns={state.columns}
             data={state.data}
             localization={{
