@@ -145,11 +145,11 @@ export const Statisitcs = (props) => {
     }
 
     const handleGotoTop = () => {
-
+        window.scrollTo(0);
     }
 
     const handleGotoBottom = () => {
-
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
     const compareDate = (a,b, column, sort) => {
@@ -186,7 +186,15 @@ export const Statisitcs = (props) => {
             }
             console.log(sortedData);
             setState((prevState) => ({...prevState, filteredData: sortedData}));
-            setSortingState((prevState) => ({...prevState, [column]: 'DES'}))
+            console.log('b4: ', sortingState, column);
+            const newSortingState = {...sortingState};
+            Object.keys(newSortingState).forEach((key) => {
+                if (new Intl.Collator('cn').compare(key, column) === 0) {
+                    newSortingState[key] = 'DES';
+                }
+            })
+            setSortingState(newSortingState)
+            console.log('after: ', sortingState);
         } else {
             let sortedData = [];
             if (column.includes('日期')) {
@@ -199,7 +207,15 @@ export const Statisitcs = (props) => {
             }
             console.log(sortedData);
             setState((prevState) => ({...prevState, filteredData: sortedData}));
-            setSortingState((prevState) => ({...prevState, [column]: 'ASC'}))
+            console.log('b4: ', sortingState);
+            const newSortingState = {...sortingState};
+            Object.keys(newSortingState).forEach((key) => {
+                if (new Intl.Collator('cn').compare(key, column) === 0) {
+                    newSortingState[key] = 'ASC';
+                }
+            })
+            setSortingState(newSortingState)
+            console.log('after: ', sortingState);
         }
     }
 
@@ -265,9 +281,9 @@ export const Statisitcs = (props) => {
     }
 
     const actions = [
-        { icon: <Sort />, name: '排序', action: (e) => setAnchorEl(e.currentTarget)},
-        { icon: <ArrowUpward />, name: '最上', action: (e) => handleGotoTop()},
         { icon: <ArrowDownward />, name: '最下', action: (e) => handleGotoBottom()},
+        { icon: <ArrowUpward />, name: '最上', action: (e) => handleGotoTop()},
+        { icon: <Sort />, name: '排序', action: (e) => setAnchorEl(e.currentTarget)},
     ];
     return (
         <div>
@@ -324,11 +340,13 @@ export const Statisitcs = (props) => {
                         open={Boolean(anchorEl)}
                         onClose={() => handleCloseMenu()}
                     >
-                        {state.columns && state.columns.map(column => (
+                        {state.columns && state.columns.map(column => {
+                            console.log(sortingState[column.title]);
+                            return (
                             <MenuItem onClick={() => handleSort(column.title)}>
-                                {`${column.title} (${sortingState[column] === 'ASC' ? '由大至小' : '由小至大'})`}
+                                {`${column.title} (${sortingState[column.title] && sortingState[column.title] === 'ASC' ? '由大至小' : '由小至大'})`}
                             </MenuItem>
-                        ))}
+                        );})}
                     </Menu>
                 </div>}
         </div>
