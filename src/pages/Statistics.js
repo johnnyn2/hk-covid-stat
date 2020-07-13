@@ -103,21 +103,28 @@ export const Statisitcs = (props) => {
             setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
             const sortingState = {};
             Object.keys(csvData.columns).forEach(column => {
-                console.log('init:', column);
                 sortingState[columns[column].title] = 'ASC';
             });
             setSortingState(sortingState);
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: '完成'}))
-            console.log('data: ', data);
-            console.log('columns: ', columns);
         })
     },[])
 
     const handleSearch = () => {
+        setSnackState({
+            open: true,
+            severity: "into",
+            message: "處理中",
+        })
         const {searchKey} = state;
         if (searchKey === "") {
             handleReset();
+            setSnackState({
+                open: true,
+                severity: "success",
+                message: "完成"
+            })
             return;
         };
         const searchResult = state.data.filter(row => {
@@ -126,13 +133,16 @@ export const Statisitcs = (props) => {
             let contains = false;
 
             const matchedKeys = keys.filter(key => {
-                console.log('compare: ', row[key], searchKey, row[key].includes(searchKey))
                 return row[key].includes(searchKey);
             });
-            console.log('matchedKeys: ', matchedKeys);
             return matchedKeys.length > 0;
         })
         setState((prevState) => ({...prevState, filteredData: searchResult,}));
+        setSnackState({
+            open: true,
+            severity: "success",
+            message: "完成"
+        })
     }
 
     const handleReset = () => {
@@ -145,7 +155,7 @@ export const Statisitcs = (props) => {
     }
 
     const handleGotoTop = () => {
-        window.scrollTo(0);
+        window.scrollTo({top: 0});
     }
 
     const handleGotoBottom = () => {
@@ -172,7 +182,6 @@ export const Statisitcs = (props) => {
       }
 
     const handleSort = (column) => {
-        console.log('handleSort: ', column, sortingState, sortingState[column]);
         handleCloseMenu();
         if (sortingState[column] === 'ASC') {
             let sortedData = [];
@@ -184,9 +193,7 @@ export const Statisitcs = (props) => {
                 // sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
                 sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(b[column], a[column]));
             }
-            console.log(sortedData);
             setState((prevState) => ({...prevState, filteredData: sortedData}));
-            console.log('b4: ', sortingState, column);
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
                 if (new Intl.Collator('cn').compare(key, column) === 0) {
@@ -194,7 +201,6 @@ export const Statisitcs = (props) => {
                 }
             })
             setSortingState(newSortingState)
-            console.log('after: ', sortingState);
         } else {
             let sortedData = [];
             if (column.includes('日期')) {
@@ -205,9 +211,7 @@ export const Statisitcs = (props) => {
                 // sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
                 sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(a[column], b[column]));
             }
-            console.log(sortedData);
             setState((prevState) => ({...prevState, filteredData: sortedData}));
-            console.log('b4: ', sortingState);
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
                 if (new Intl.Collator('cn').compare(key, column) === 0) {
@@ -215,7 +219,6 @@ export const Statisitcs = (props) => {
                 }
             })
             setSortingState(newSortingState)
-            console.log('after: ', sortingState);
         }
     }
 
@@ -292,7 +295,7 @@ export const Statisitcs = (props) => {
                     {snackState.message}
                 </Alert>
             </Snackbar>
-            {isLoading ? <img src={loadingGif} /> :
+            {isLoading ? <span /> :
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -341,7 +344,6 @@ export const Statisitcs = (props) => {
                         onClose={() => handleCloseMenu()}
                     >
                         {state.columns && state.columns.map(column => {
-                            console.log(sortingState[column.title]);
                             return (
                             <MenuItem onClick={() => handleSort(column.title)}>
                                 {`${column.title} (${sortingState[column.title] && sortingState[column.title] === 'ASC' ? '由大至小' : '由小至大'})`}

@@ -50,7 +50,8 @@ export const Dashboard = (props) => {
                     </Button>
                     <Button variant="contained" color="default" tyle={listButtonStyles} onClick={() => handleChangePage(PAGES.CONFINEES_BUILDINGS)}>
                         根據香港法例第599C章正在接受強制家居檢疫人士所居住的大廈名單
-                    </Button>   
+                    </Button>
+                    <div style={{marginTop: 20, textAlign: 'right'}}>本程式最後更新時間：13/07/2020</div>  
                 </div>
             </Container>
         </React.Fragment>

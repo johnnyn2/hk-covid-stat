@@ -79,7 +79,7 @@ export const CustomAppBar = (props) => {
       <AppBar position="fixed" style={{height: 64}}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            {`新冠肺炎疫情數據庫 本程式最後更新時間: 12/07/2020`}
+            {`新冠肺炎疫情數據庫`}
           </Typography>
           <Button color="inherit" onClick={() => handleChangePage(PAGES.MAIN)}>
             主頁

@@ -1,6 +1,6 @@
 {
-  "homepage": "https://johnnyn2.github.io/hk-covid-stat/",
-  "name": "hk_covid19",
+  "homepage": "https://johnnyn2.github.io/hk-covid-stat",
+  "name": "hk-covid-stat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
