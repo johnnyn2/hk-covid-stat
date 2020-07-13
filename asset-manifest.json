@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/hk-covid-stat/static/css/main.5f361e03.chunk.css",
-    "main.js": "/hk-covid-stat/static/js/main.80d62c13.chunk.js",
-    "main.js.map": "/hk-covid-stat/static/js/main.80d62c13.chunk.js.map",
+    "main.js": "/hk-covid-stat/static/js/main.0c433ea6.chunk.js",
+    "main.js.map": "/hk-covid-stat/static/js/main.0c433ea6.chunk.js.map",
     "runtime-main.js": "/hk-covid-stat/static/js/runtime-main.df68e22c.js",
     "runtime-main.js.map": "/hk-covid-stat/static/js/runtime-main.df68e22c.js.map",
-    "static/js/2.b9082ece.chunk.js": "/hk-covid-stat/static/js/2.b9082ece.chunk.js",
-    "static/js/2.b9082ece.chunk.js.map": "/hk-covid-stat/static/js/2.b9082ece.chunk.js.map",
+    "static/js/2.fed6a1db.chunk.js": "/hk-covid-stat/static/js/2.fed6a1db.chunk.js",
+    "static/js/2.fed6a1db.chunk.js.map": "/hk-covid-stat/static/js/2.fed6a1db.chunk.js.map",
     "index.html": "/hk-covid-stat/index.html",
-    "precache-manifest.31d6a6dcfa8629c0f6cf3bbe6ab52129.js": "/hk-covid-stat/precache-manifest.31d6a6dcfa8629c0f6cf3bbe6ab52129.js",
+    "precache-manifest.971c9aa98b258c8262c2cc57c2f7c1ab.js": "/hk-covid-stat/precache-manifest.971c9aa98b258c8262c2cc57c2f7c1ab.js",
     "service-worker.js": "/hk-covid-stat/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/hk-covid-stat/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.b9082ece.chunk.js.LICENSE.txt": "/hk-covid-stat/static/js/2.b9082ece.chunk.js.LICENSE.txt",
-    "static/media/building_list_chi.csv": "/hk-covid-stat/static/media/building_list_chi.8da5764e.csv",
-    "static/media/enhanced_sur_covid_19_chi.csv": "/hk-covid-stat/static/media/enhanced_sur_covid_19_chi.757c8300.csv",
+    "static/js/2.fed6a1db.chunk.js.LICENSE.txt": "/hk-covid-stat/static/js/2.fed6a1db.chunk.js.LICENSE.txt",
+    "static/media/building_list_chi.csv": "/hk-covid-stat/static/media/building_list_chi.d1c090b0.csv",
+    "static/media/enhanced_sur_covid_19_chi.csv": "/hk-covid-stat/static/media/enhanced_sur_covid_19_chi.34f45087.csv",
     "static/media/home_confinees_tier2_building_list.csv": "/hk-covid-stat/static/media/home_confinees_tier2_building_list.0b6aa28c.csv",
-    "static/media/latest_situation_of_reported_cases_covid_19_chi.csv": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_chi.8a5d3670.csv",
+    "static/media/latest_situation_of_reported_cases_covid_19_chi.csv": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_chi.1941ccad.csv",
     "static/media/loading.gif": "/hk-covid-stat/static/media/loading.75ae2ba2.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.df68e22c.js",
-    "static/js/2.b9082ece.chunk.js",
+    "static/js/2.fed6a1db.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.80d62c13.chunk.js"
+    "static/js/main.0c433ea6.chunk.js"
   ]
 }
