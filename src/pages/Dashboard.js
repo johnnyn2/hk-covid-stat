@@ -5,6 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
 import {PAGES} from '../constants/constants';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import {createMuiTheme, createStyles} from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +22,7 @@ const listButtonStyles = {
     marginBottom: 10,
 }
 export const Dashboard = (props) => {
+    
     const classes = useStyles();
 
     const handleChangePage = (currentPage) => {
@@ -40,18 +47,32 @@ export const Dashboard = (props) => {
                     }}
                 >
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.LATEST)}>
-                        本港2019冠狀病毒病的最新情況
+                        {props.lang === 'cn' ? '本港2019冠狀病毒病的最新情況' : 'Latest situation of reported cases of COVID-19 in Hong Kong'}
                     </Button>
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.CASES)}>
-                        本港疑似/確診2019冠狀病毒的個案詳情
+                        {props.lang === 'cn' ? '本港疑似/確診2019冠狀病毒的個案詳情' : 'Details of probable/confirmed cases of COVID-19 infection in Hong Kong'}
                     </Button>
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.BUILDINGS)}>
-                        過去14天內曾有疑似/確診個案居住過的住宅大廈; 或過去 14 天內曾出現兩宗或以上疑似/確診個案的非住宅大廈
+                        {props.lang === 'cn' ? '過去14天內曾有疑似/確診個案居住過的住宅大廈; 或過去 14 天內曾出現兩宗或以上疑似/確診個案的非住宅大廈' : 'Residential buildings in which probable/confirmed cases have resided in the past 14 days or non-residential building with 2 or more probable/confirmed cases in the past 14 days'}
                     </Button>
                     <Button variant="contained" color="default" tyle={listButtonStyles} onClick={() => handleChangePage(PAGES.CONFINEES_BUILDINGS)}>
-                        根據香港法例第599C章正在接受強制家居檢疫人士所居住的大廈名單
+                        {props.lang === 'cn' ? '根據香港法例第599C章正在接受強制家居檢疫人士所居住的大廈名單' : 'List of buildings of the home confinees under mandatory home quarantine according to Cap. 599C of Hong Kong Laws'}
                     </Button>
-                    <div style={{marginTop: 20, textAlign: 'right'}}>本程式最後更新時間：13/07/2020</div>  
+                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：14/07/2020 14:02</div>
+                    <ToggleButtonGroup
+                        value={props.lang}
+                        exclusive
+                        onChange={(event, lang) => { if (lang !== null) props.setLang(prevState => ({...prevState, lang,}))}}
+                        aria-label="text alignment"
+                        style={{alignSelf: 'flex-end'}}
+                    >
+                        <ToggleButton value="cn" aria-label="left" >
+                            中文
+                        </ToggleButton>
+                        <ToggleButton value="en" aria-label="right" >
+                            ENG
+                        </ToggleButton>
+                    </ToggleButtonGroup>
                 </div>
             </Container>
         </React.Fragment>

@@ -8,6 +8,10 @@ import cases from '../csv/enhanced_sur_covid_19_chi.csv';
 import buildings from '../csv/building_list_chi.csv';
 import confiness from '../csv/home_confinees_tier2_building_list.csv';
 
+import latest_eng from '../csv/latest_situation_of_reported_cases_covid_19_eng.csv';
+import cases_eng from '../csv/enhanced_sur_covid_19_eng.csv';
+import buildings_eng from '../csv/building_list_eng.csv';
+
 import Clear from '@material-ui/icons/Clear';
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
@@ -90,24 +94,38 @@ export const Statisitcs = (props) => {
         let url = '';
         let title = '';
         switch(props.url) {
-            case STAT_URLS.LATEST: url = latest; title = STAT_TITLE.LATEST; break;
-            case STAT_URLS.CASES: url = cases; title = STAT_TITLE.CASES; break;
-            case STAT_URLS.BUILDINGS: url = buildings; title = STAT_TITLE.BUILDINGS; break;
+            case STAT_URLS.LATEST: url = props.lang === 'cn' ? latest : latest_eng; title = STAT_TITLE.LATEST; break;
+            case STAT_URLS.CASES: url = props.lang === 'cn' ? cases : cases_eng; title = STAT_TITLE.CASES; break;
+            case STAT_URLS.BUILDINGS: url = props.lang === 'cn' ? buildings : buildings_eng; title = STAT_TITLE.BUILDINGS; break;
             case STAT_URLS.CONFINEES_BUILDINGS: url = confiness; title = STAT_TITLE.CONFINEES_BUILDINGS; break;
         }
         setIsLoading(true);
-        setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: '加載中...'}))
+        setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: props.lang === 'cn' ? '加載中...' : 'Loading...'}))
         csv(url).then(csvData => {
             const data = csvData.filter((row, i) => i !== csvData.length-1);
             const columns = csvData.columns.map(col => ({title: col, field: col}));
-            setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
+            let hasDate = false;
+            let dataSortByDate = {};
+            for (let i=0;i<csvData.columns.length;i++) {
+                if (csvData.columns[i].includes(props.lang === 'cn' ? '日期' : 'date')) {
+                    dataSortByDate = data.sort((a,b) => compareDate(a, b, csvData.columns[i], 'ASC'));
+                    hasDate = true;
+                    break;
+                }
+            }
+            if (hasDate) {
+                setState((prevState) => ({...prevState, data: dataSortByDate, columns, title, filteredData: dataSortByDate,}));
+            } else {
+                setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
+            }
+            
             const sortingState = {};
             Object.keys(csvData.columns).forEach(column => {
-                sortingState[columns[column].title] = 'ASC';
+                sortingState[columns[column].title] = columns[column].title.includes(props.lang === 'cn' ? '日期' : 'date') ? 'DES' : 'ASC';
             });
             setSortingState(sortingState);
             setIsLoading(false);
-            setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: '完成'}))
+            setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: props.lang === 'cn' ? '完成' : 'Done'}))
         })
     },[])
 
@@ -115,7 +133,7 @@ export const Statisitcs = (props) => {
         setSnackState({
             open: true,
             severity: "into",
-            message: "處理中",
+            message: props.lang === 'cn' ? "處理中" : "Processing",
         })
         const {searchKey} = state;
         if (searchKey === "") {
@@ -123,7 +141,7 @@ export const Statisitcs = (props) => {
             setSnackState({
                 open: true,
                 severity: "success",
-                message: "完成"
+                message: props.lang === 'cn' ? "完成" : "Done"
             })
             return;
         };
@@ -141,7 +159,7 @@ export const Statisitcs = (props) => {
         setSnackState({
             open: true,
             severity: "success",
-            message: "完成"
+            message: props.lang === 'cn' ? "完成" : "Done"
         })
     }
 
@@ -185,7 +203,7 @@ export const Statisitcs = (props) => {
         handleCloseMenu();
         if (sortingState[column] === 'ASC') {
             let sortedData = [];
-            if (column.includes('日期')) {
+            if (column.includes(props.lang === 'cn' ? '日期' : 'date')) {
                 sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'ASC'))
             } else if (/^\d+$/.test(state.filteredData[0][column])) {
                 sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
@@ -203,7 +221,7 @@ export const Statisitcs = (props) => {
             setSortingState(newSortingState)
         } else {
             let sortedData = [];
-            if (column.includes('日期')) {
+            if (column.includes(props.lang === 'cn' ? '日期' : 'date')) {
                 sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'DES'))
             } else if (/^\d+$/.test(state.filteredData[0][column])) {
                 sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
@@ -284,9 +302,9 @@ export const Statisitcs = (props) => {
     }
 
     const actions = [
-        { icon: <ArrowDownward />, name: '最下', action: (e) => handleGotoBottom()},
-        { icon: <ArrowUpward />, name: '最上', action: (e) => handleGotoTop()},
-        { icon: <Sort />, name: '排序', action: (e) => setAnchorEl(e.currentTarget)},
+        { icon: <ArrowDownward />, name: props.lang === 'cn' ? '最下' : 'Lowest', action: (e) => handleGotoBottom()},
+        { icon: <ArrowUpward />, name: props.lang=== 'cn' ? '最上' : 'Uppest', action: (e) => handleGotoTop()},
+        { icon: <Sort />, name: props.lang==='cn' ? '排序' : 'Sort', action: (e) => setAnchorEl(e.currentTarget)},
     ];
     return (
         <div>
@@ -302,7 +320,7 @@ export const Statisitcs = (props) => {
                     alignItems: 'center'
                 }}>
                     <TextField
-                        placeholder="搜尋"
+                        placeholder={props.lang === 'cn' ? "搜尋" : 'Search'}
                         value={state.searchKey}
                         onChange={(e) => handleInput(e)}
                         InputProps={{
@@ -346,7 +364,7 @@ export const Statisitcs = (props) => {
                         {state.columns && state.columns.map(column => {
                             return (
                             <MenuItem onClick={() => handleSort(column.title)}>
-                                {`${column.title} (${sortingState[column.title] && sortingState[column.title] === 'ASC' ? '由大至小' : '由小至大'})`}
+                                {`${column.title} (${sortingState[column.title] && sortingState[column.title] === 'ASC' ? props.lang ==='cn' ? '由大至小' : 'Descending' : props.lang==='cn' ? '由小至大' : 'Ascending'})`}
                             </MenuItem>
                         );})}
                     </Menu>

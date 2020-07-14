@@ -76,17 +76,18 @@ export const CustomAppBar = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" style={{height: 64}}>
+      <AppBar position="fixed" style={{height: 64, justifyContent: 'center'}}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             {`新冠肺炎疫情數據庫`}
           </Typography>
           <Button color="inherit" onClick={() => handleChangePage(PAGES.MAIN)}>
-            主頁
+            {props.lang === 'cn' ? '主頁' : 'Home'}
           </Button>
           <Button color="inherit" onClick={() => handleChangePage(PAGES.ABOUT)}>
-            關於
+            {props.lang === 'cn' ? '關於' : 'About'}
           </Button>
+          
         </Toolbar>
       </AppBar>
     </div>
