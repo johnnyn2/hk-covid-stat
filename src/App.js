@@ -22,6 +22,8 @@ function App() {
     case PAGES.BUILDINGS: content = <Statisitcs lang={state.lang} url={STAT_URLS.BUILDINGS}/>; break;
     case PAGES.CONFINEES_BUILDINGS: content = <Statisitcs lang={state.lang} url={STAT_URLS.CONFINEES_BUILDINGS}/>; break;
     case PAGES.COLLECTION_POINTS: content = <Statisitcs lang={state.lang} url={STAT_URLS.COLLECTION_POINTS}/>; break;
+    case PAGES.FLIGHT_TRAINS: content = <Statisitcs lang={state.lang} url={STAT_URLS.FLIGHT_TRAINS}/>; break;
+    case PAGES.GUARANTINE_ORDERS: content = <Statisitcs lang={state.lang} url={STAT_URLS.GUARANTINE_ORDERS}/>; break;
     default: break;
   }
 

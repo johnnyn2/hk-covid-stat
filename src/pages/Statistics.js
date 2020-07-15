@@ -8,11 +8,14 @@ import cases from '../csv/enhanced_sur_covid_19_chi.csv';
 import buildings from '../csv/building_list_chi.csv';
 import confiness from '../csv/home_confinees_tier2_building_list.csv';
 import collections from '../csv/list_of_collection_points_chi.csv';
+import flight from '../csv/flights_trains_list_chi.csv';
+import orders from '../csv/newly_issued_quarantine_orders_cap599c.csv';
 
 import latest_eng from '../csv/latest_situation_of_reported_cases_covid_19_eng.csv';
 import cases_eng from '../csv/enhanced_sur_covid_19_eng.csv';
 import buildings_eng from '../csv/building_list_eng.csv';
 import collections_eng from '../csv/list_of_collection_points_eng.csv';
+import flight_eng from '../csv/flights_trains_list_eng.csv';
 
 import Clear from '@material-ui/icons/Clear';
 import Search from '@material-ui/icons/Search'
@@ -33,7 +36,7 @@ import MaterialTable from 'material-table';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import { TextField, InputAdornment, IconButton } from '@material-ui/core';
+import { TextField, InputAdornment, IconButton, Typography } from '@material-ui/core';
 
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
@@ -101,6 +104,8 @@ export const Statisitcs = (props) => {
             case STAT_URLS.BUILDINGS: url = props.lang === 'cn' ? buildings : buildings_eng; title = STAT_TITLE.BUILDINGS; break;
             case STAT_URLS.CONFINEES_BUILDINGS: url = confiness; title = STAT_TITLE.CONFINEES_BUILDINGS; break;
             case STAT_URLS.COLLECTION_POINTS: url = props.lang === 'cn' ? collections : collections_eng; title = STAT_TITLE.COLLECTION_POINTS; break;
+            case STAT_URLS.FLIGHT_TRAINS: url = props.lang === 'cn' ? flight: flight_eng; title = STAT_TITLE.FLIGHT_TRAINS; break;
+            case STAT_URLS.GUARANTINE_ORDERS: url = orders; title = STAT_TITLE.GUARANTINE_ORDERS; break;
         }
         setIsLoading(true);
         setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: props.lang === 'cn' ? '加載中...' : 'Loading...'}))
@@ -309,8 +314,20 @@ export const Statisitcs = (props) => {
         { icon: <ArrowUpward />, name: props.lang=== 'cn' ? '最上' : 'Uppest', action: (e) => handleGotoTop()},
         { icon: <Sort />, name: props.lang==='cn' ? '排序' : 'Sort', action: (e) => setAnchorEl(e.currentTarget)},
     ];
+    let title = '';
+    switch(props.url) {
+        case STAT_URLS.BUILDINGS: title = props.lang === 'cn' ? STAT_TITLE.CN.BUILDINGS : STAT_TITLE.EN.BUILDINGS; break;
+        case STAT_URLS.CASES: title = props.lang === 'cn' ? STAT_TITLE.CN.CASES: STAT_TITLE.EN.CASES; break;
+        case STAT_URLS.COLLECTION_POINTS: title = props.lang === 'cn' ? STAT_TITLE.CN.COLLECTION_POINTS : STAT_TITLE.EN.COLLECTION_POINTS; break;
+        case STAT_URLS.LATEST: title = props.lang === 'cn' ? STAT_TITLE.CN.LATEST : STAT_TITLE.EN.LATEST; break;
+        case STAT_URLS.FLIGHT_TRAINS: title = props.lang === 'cn' ? STAT_TITLE.CN.FLIGHT_TRAINS : STAT_TITLE.EN.FLIGHT_TRAINS; break;
+        case STAT_URLS.GUARANTINE_ORDERS: title = props.lang === 'cn' ? STAT_TITLE.CN.GUARANTINE_ORDERS : STAT_TITLE.EN.GUARANTINE_ORDERS; break;
+        case STAT_URLS.CONFINEES_BUILDINGS: title = props.lang === 'cn' ? STAT_TITLE.CN.CONFINEES_BUILDINGS: STAT_TITLE.EN.CONFINEES_BUILDINGS; break;
+
+    }
     return (
         <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Typography style={{fontWeight: 'bold', textAlign: 'left', marginLeft: 20, marginRight: 20}} component="h1">{title}</Typography></div>
             <Snackbar open={snackState.open} autoHideDuration={6000} onClose={() => setOpenSnack(false)}>
                 <Alert onClose={() => setOpenSnack(false)} severity={snackState.severity}>
                     {snackState.message}

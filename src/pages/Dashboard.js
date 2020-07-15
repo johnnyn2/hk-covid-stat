@@ -58,10 +58,16 @@ export const Dashboard = (props) => {
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.CONFINEES_BUILDINGS)}>
                         {props.lang === 'cn' ? '根據香港法例第599C章正在接受強制家居檢疫人士所居住的大廈名單' : 'List of buildings of the home confinees under mandatory home quarantine according to Cap. 599C of Hong Kong Laws'}
                     </Button>
+                    <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.FLIGHT_TRAINS)}>
+                        {props.lang === 'cn' ? '過去14天內曾有疑似/確診2019冠狀病毒病個案在出現病徵期間乘搭過的航班/火車/船/車名單' : 'List of flights/trains/ships/cars taken by probable/confirmed cases of COVID-19 during the symptomatic phase in the past 14 days'}
+                    </Button>
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.COLLECTION_POINTS)}>
                         {props.lang === 'cn' ? '供私家醫生病人送交樣本作2019冠狀病毒病病毒測試的收集點' : 'Collection points for submission of specimens by patients of private doctors for COVID-19 testing'}
                     </Button>
-                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：15/07/2020 09:57</div>
+                    <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.GUARANTINE_ORDERS)}>
+                        {props.lang === 'cn' ? '根據《若干到港人士強制檢疫規例》（第599C章）新發出強制檢疫令的統計資料' : 'Statistics of newly issued quarantine orders under the Compulsory Quarantine of Certain Persons Arriving at Hong Kong Regulation (Cap. 599C)'}
+                    </Button>
+                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：15/07/2020 17:20</div>
                     <ToggleButtonGroup
                         value={props.lang}
                         exclusive
