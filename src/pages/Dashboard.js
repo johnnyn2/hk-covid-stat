@@ -55,10 +55,13 @@ export const Dashboard = (props) => {
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.BUILDINGS)}>
                         {props.lang === 'cn' ? '過去14天內曾有疑似/確診個案居住過的住宅大廈; 或過去 14 天內曾出現兩宗或以上疑似/確診個案的非住宅大廈' : 'Residential buildings in which probable/confirmed cases have resided in the past 14 days or non-residential building with 2 or more probable/confirmed cases in the past 14 days'}
                     </Button>
-                    <Button variant="contained" color="default" tyle={listButtonStyles} onClick={() => handleChangePage(PAGES.CONFINEES_BUILDINGS)}>
+                    <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.CONFINEES_BUILDINGS)}>
                         {props.lang === 'cn' ? '根據香港法例第599C章正在接受強制家居檢疫人士所居住的大廈名單' : 'List of buildings of the home confinees under mandatory home quarantine according to Cap. 599C of Hong Kong Laws'}
                     </Button>
-                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：14/07/2020 14:02</div>
+                    <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.COLLECTION_POINTS)}>
+                        {props.lang === 'cn' ? '供私家醫生病人送交樣本作2019冠狀病毒病病毒測試的收集點' : 'Collection points for submission of specimens by patients of private doctors for COVID-19 testing'}
+                    </Button>
+                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：15/07/2020 09:57</div>
                     <ToggleButtonGroup
                         value={props.lang}
                         exclusive

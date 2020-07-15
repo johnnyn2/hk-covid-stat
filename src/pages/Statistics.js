@@ -7,10 +7,12 @@ import latest from '../csv/latest_situation_of_reported_cases_covid_19_chi.csv';
 import cases from '../csv/enhanced_sur_covid_19_chi.csv';
 import buildings from '../csv/building_list_chi.csv';
 import confiness from '../csv/home_confinees_tier2_building_list.csv';
+import collections from '../csv/list_of_collection_points_chi.csv';
 
 import latest_eng from '../csv/latest_situation_of_reported_cases_covid_19_eng.csv';
 import cases_eng from '../csv/enhanced_sur_covid_19_eng.csv';
 import buildings_eng from '../csv/building_list_eng.csv';
+import collections_eng from '../csv/list_of_collection_points_eng.csv';
 
 import Clear from '@material-ui/icons/Clear';
 import Search from '@material-ui/icons/Search'
@@ -98,6 +100,7 @@ export const Statisitcs = (props) => {
             case STAT_URLS.CASES: url = props.lang === 'cn' ? cases : cases_eng; title = STAT_TITLE.CASES; break;
             case STAT_URLS.BUILDINGS: url = props.lang === 'cn' ? buildings : buildings_eng; title = STAT_TITLE.BUILDINGS; break;
             case STAT_URLS.CONFINEES_BUILDINGS: url = confiness; title = STAT_TITLE.CONFINEES_BUILDINGS; break;
+            case STAT_URLS.COLLECTION_POINTS: url = props.lang === 'cn' ? collections : collections_eng; title = STAT_TITLE.COLLECTION_POINTS; break;
         }
         setIsLoading(true);
         setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: props.lang === 'cn' ? '加載中...' : 'Loading...'}))
@@ -291,7 +294,7 @@ export const Statisitcs = (props) => {
     if (state.filteredData !== null && state.columns !== null) {
         result = state.filteredData.map((row, idx) => {
             const keys = Object.keys(row);
-            const tableContent = keys.map(k => <tr><td>{k}</td><td>{row[k]}</td></tr>)
+            const tableContent = keys.map(k => <tr><td style={{minWidth: 50}}>{k}</td><td>{row[k]}</td></tr>)
             return (
             <div key={idx} style={{backgroundColor: 'white', color: 'rgba(0, 0, 0, 0.87)', borderRadius: '10px', border: '1px solid #E7E7E7', margin: 10}}>
                 <table style={{width: 300, textAlign: 'left', padding: 30}}>
@@ -344,7 +347,7 @@ export const Statisitcs = (props) => {
                         onClick={() => setSpeedDialOpen(!speedDialOpen)}
                         open={speedDialOpen}
                         direction={'up'}
-                        style={{position: 'fixed'}}
+                        style={{position: 'fixed', zIndex: 1500}}
                     >
                         {actions.map((action) => (
                             <SpeedDialAction
