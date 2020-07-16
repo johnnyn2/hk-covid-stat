@@ -91,6 +91,7 @@ export const Statisitcs = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [state, setState] = useState(initState);
     const [sortingState, setSortingState] = useState(initSortingState);
+    const [noOfDataTag, setTag] = useState(''); 
     const classes = useStyles();
     const setOpenSnack = (open) => {
         setSnackState((prevSnack) => ({...prevSnack, open,}))
@@ -132,6 +133,7 @@ export const Statisitcs = (props) => {
                 sortingState[columns[column].title] = columns[column].title.includes(props.lang === 'cn' ? '日期' : 'date') ? 'DES' : 'ASC';
             });
             setSortingState(sortingState);
+            setTag(props.lang === 'cn' ? `共${state.data.length}項資料。` : `${state.data.length} data in total. `);
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: props.lang === 'cn' ? '完成' : 'Done'}))
         })
@@ -146,6 +148,7 @@ export const Statisitcs = (props) => {
         const {searchKey} = state;
         if (searchKey === "") {
             handleReset();
+            setTag(props.lang === 'cn' ? `共${state.filteredData.length}項資料。` : `${state.filteredData.length} data in total. `);
             setSnackState({
                 open: true,
                 severity: "success",
@@ -164,6 +167,7 @@ export const Statisitcs = (props) => {
             return matchedKeys.length > 0;
         })
         setState((prevState) => ({...prevState, filteredData: searchResult,}));
+        setTag(props.lang === 'cn' ? `共${state.data.length}項資料。${state.filteredData.length}個結果。` : `${state.filteredData.length} data in total. ${state.filteredData.length} search result(s).`);
         setSnackState({
             open: true,
             severity: "success",
@@ -327,7 +331,11 @@ export const Statisitcs = (props) => {
     }
     return (
         <div>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Typography style={{fontWeight: 'bold', textAlign: 'left', marginLeft: 20, marginRight: 20}} component="h1">{title}</Typography></div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Typography style={{fontWeight: 'bold', textAlign: 'left', marginLeft: 20, marginRight: 20}} component="h1">
+                    {title}
+                </Typography>
+            </div>
             <Snackbar open={snackState.open} autoHideDuration={6000} onClose={() => setOpenSnack(false)}>
                 <Alert onClose={() => setOpenSnack(false)} severity={snackState.severity}>
                     {snackState.message}
@@ -339,6 +347,7 @@ export const Statisitcs = (props) => {
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
+                    <span>{noOfDataTag}</span>
                     <TextField
                         placeholder={props.lang === 'cn' ? "搜尋" : 'Search'}
                         value={state.searchKey}
