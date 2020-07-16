@@ -394,6 +394,7 @@ export const Statisitcs = (props) => {
                         keepMounted
                         open={Boolean(anchorEl)}
                         onClose={() => handleCloseMenu()}
+                        style={{zIndex: 1501}}
                     >
                         {state.columns && state.columns.map(column => {
                             return (
