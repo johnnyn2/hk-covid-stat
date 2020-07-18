@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import loadingGif from '../img/loading.gif';
 import {STAT_URLS, STAT_TITLE} from '../constants/constants';
@@ -36,7 +36,7 @@ import MaterialTable from 'material-table';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import { TextField, InputAdornment, IconButton, Typography } from '@material-ui/core';
+import { TextField, InputAdornment, IconButton, Typography, Button } from '@material-ui/core';
 
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
@@ -78,6 +78,7 @@ export const Statisitcs = (props) => {
         title: '',
         searchKey: '',
         filteredData: null,
+        displayItems: [],
     }
     const initSortingState = {}
     const initSnackState = {
@@ -93,6 +94,7 @@ export const Statisitcs = (props) => {
     const [sortingState, setSortingState] = useState(initSortingState);
     const [noOfDataTag, setTag] = useState(''); 
     const classes = useStyles();
+    const lastElement = useRef(null);
     const setOpenSnack = (open) => {
         setSnackState((prevSnack) => ({...prevSnack, open,}))
     }
@@ -126,9 +128,9 @@ export const Statisitcs = (props) => {
                 dataSortByDate = data.sort((a,b) => b[props.lang ==='cn' ? '個案編號' : 'Case no.'] - a[props.lang === 'cn' ? '個案編號' : 'Case no.'])
             }
             if (hasDate) {
-                setState((prevState) => ({...prevState, data: dataSortByDate, columns, title, filteredData: dataSortByDate,}));
+                setState((prevState) => ({...prevState, data: dataSortByDate, columns, title, filteredData: dataSortByDate, displayItems: dataSortByDate.slice(0, 20)}));
             } else {
-                setState((prevState) => ({...prevState, data, columns, title, filteredData: data,}));
+                setState((prevState) => ({...prevState, data, columns, title, filteredData: data, displayItems: data.slice(0,20)}));
             }
             
             const sortingState = {};
@@ -141,7 +143,19 @@ export const Statisitcs = (props) => {
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: props.lang === 'cn' ? '完成' : 'Done'}))
         })
+
+        window.addEventListener("scroll", trackScrolling);
+
+        return () => window.removeEventListener("scroll", trackScrolling)
     },[])
+
+    const trackScrolling = () => {
+        // const e = lastElement.current;
+        // const bottom = e.scrollHeight - e.scrollTop === e.clientHeight;
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            loadMore();
+         }
+    }
 
     const handleSearch = () => {
         setSnackState({
@@ -261,6 +275,21 @@ export const Statisitcs = (props) => {
         setAnchorEl(null);
     }
 
+    const loadMore = () => {
+        setState((prevState) => {
+            const startIndex = prevState.displayItems.length;
+            if (prevState.displayItems.length >= prevState.filteredData.length) {
+                return {...prevState};
+            } else {
+                return {
+                    ...prevState,
+                    displayItems: prevState.displayItems.concat(prevState.filteredData.slice(startIndex, startIndex + 20))
+                }
+            }
+            
+        })
+    }
+
     let result = <span/>;
     if (state.data !== null && state.col !== null) {
         result = (
@@ -306,7 +335,7 @@ export const Statisitcs = (props) => {
         );
     }
     if (state.filteredData !== null && state.columns !== null) {
-        result = state.filteredData.map((row, idx) => {
+        result = state.displayItems.map((row, idx) => {
             const keys = Object.keys(row);
             const tableContent = keys.map(k => <tr><td style={{minWidth: 50}}>{k}</td><td>{row[k]}</td></tr>)
             return (
