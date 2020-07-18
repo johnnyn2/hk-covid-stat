@@ -184,7 +184,7 @@ export const Statisitcs = (props) => {
             });
             return matchedKeys.length > 0;
         })
-        setState((prevState) => ({...prevState, filteredData: searchResult,}));
+        setState((prevState) => ({...prevState, filteredData: searchResult, displayItems: searchResult.slice(0, prevState.displayItems.length)}));
         setTag(props.lang === 'cn' ? `共${state.data.length}項資料，${searchResult.length}個結果。` : `${state.data.length} data in total. ${searchResult.length} search result(s).`);
         setSnackState({
             open: true,
@@ -194,7 +194,7 @@ export const Statisitcs = (props) => {
     }
 
     const handleReset = () => {
-        setState((prevState) => ({...prevState, searchKey: '', filteredData: state.data}));
+        setState((prevState) => ({...prevState, searchKey: '', filteredData: prevState.data, displayItems: prevState.data.slice(0, prevState.displayItems.length)}));
         setTag(props.lang === 'cn' ? `共${state.data.length}項資料` : `${state.data.length} data in total`)
     }
 
@@ -242,7 +242,7 @@ export const Statisitcs = (props) => {
                 // sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
                 sortedData = state.filteredData.sort((a,b) => new Intl.Collator(props.lang).compare(b[column], a[column]));
             }
-            setState((prevState) => ({...prevState, filteredData: sortedData}));
+            setState((prevState) => ({...prevState, filteredData: sortedData, displayItems: sortedData.slice(0, prevState.displayItems.length)}));
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
                 if (new Intl.Collator(props.lang).compare(key, column) === 0) {
@@ -260,7 +260,7 @@ export const Statisitcs = (props) => {
                 // sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
                 sortedData = state.filteredData.sort((a,b) => new Intl.Collator(props.lang).compare(a[column], b[column]));
             }
-            setState((prevState) => ({...prevState, filteredData: sortedData}));
+            setState((prevState) => ({...prevState, filteredData: sortedData, displayItems: sortedData.slice(0, prevState.displayItems.length)}));
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
                 if (new Intl.Collator(props.lang).compare(key, column) === 0) {
