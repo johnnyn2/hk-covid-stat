@@ -1,4 +1,4 @@
-﻿更新日期,更新時間,確診個案,排除個案,仍然住院接受檢查個案,符合呈報準則個案,死亡,出院,疑似個案,住院危殆個案
+As of date,As of time,Number of confirmed cases,Number of ruled out cases,Number of cases still hospitalised for investigation,Number of cases fulfilling the reporting criteria,Number of death cases,Number of discharge cases,Number of probable cases,Number of hospitalised cases in critical condition
 08/01/2020,12:00,0,21,17,38,0,0,0,
 09/01/2020,12:00,0,25,23,48,0,0,0,
 10/01/2020,12:00,0,31,23,54,0,0,0,
@@ -190,3 +190,4 @@
 14/07/2020,12:00,1569,,,,8,1229,1,6
 15/07/2020,12:00,1588,,,,8,1241,1,7
 16/07/2020,12:00,1655,,,,10,1254,1,6
+17/07/2020,12:00,1713,,,,10,1264,1,8

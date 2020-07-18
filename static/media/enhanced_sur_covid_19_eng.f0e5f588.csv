@@ -1210,8 +1210,8 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1209,01/07/2020,Asymptomatic,M,5,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
 1210,01/07/2020,Asymptomatic,F,10,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
 1211,01/07/2020,Asymptomatic,F,39,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
-1212,01/07/2020,Asymptomatic,F,33,Queen Elizabeth Hospital,Hospitalised,HK resident,Imported case,Confirmed
-1213,01/07/2020,Asymptomatic,M,3,Queen Elizabeth Hospital,Hospitalised,HK resident,Imported case,Confirmed
+1212,01/07/2020,Asymptomatic,F,33,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
+1213,01/07/2020,Asymptomatic,M,3,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
 1214,01/07/2020,Asymptomatic,F,10,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
 1215,01/07/2020,Asymptomatic,M,7,Queen Elizabeth Hospital,Discharged,HK resident,Imported case,Confirmed
 1216,01/07/2020,Asymptomatic,F,38,Queen Elizabeth Hospital,Hospitalised,HK resident,Imported case,Confirmed
@@ -1279,10 +1279,10 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1278,06/07/2020,Asymptomatic,F,50,United Christian Hospital,Discharged,HK resident,Imported case,Confirmed
 1279,06/07/2020,Asymptomatic,M,4,Tuen Mun Hospital,Discharged,HK resident,Imported case,Confirmed
 1280,06/07/2020,Asymptomatic,F,34,United Christian Hospital,Discharged,HK resident,Imported case,Confirmed
-1281,06/07/2020,Asymptomatic,M,38,Princess Margaret Hospital,Hospitalised,HK resident,Imported case,Confirmed
+1281,06/07/2020,Asymptomatic,M,38,Princess Margaret Hospital,Discharged,HK resident,Imported case,Confirmed
 1282,06/07/2020,04/07/2020,M,28,Ruttonjee Hospital,Hospitalised,HK resident,Imported case,Confirmed
 1283,06/07/2020,04/07/2020,M,30,Queen Elizabeth Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1284,06/07/2020,Asymptomatic,M,14,Princess Margaret Hospital,Hospitalised,HK resident,Imported case,Confirmed
+1284,06/07/2020,Asymptomatic,M,14,Princess Margaret Hospital,Discharged,HK resident,Imported case,Confirmed
 1285,06/07/2020,Asymptomatic,M,30,Prince of Wales Hospital,Discharged,HK resident,Imported case,Confirmed
 1286,06/07/2020,Asymptomatic,M,28,Princess Margaret Hospital,Hospitalised,HK resident,Imported case,Confirmed
 1287,07/07/2020,Asymptomatic,M,52,Tuen Mun Hospital,Discharged,HK resident,Imported case,Confirmed
@@ -1301,7 +1301,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1300,07/07/2020,Asymptomatic,M,49,Princess Margaret Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1301,08/07/2020,04/07/2020,M,61,Kwong Wah Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1302,08/07/2020,06/07/2020,M,79,Queen Elizabeth Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1303,08/07/2020,Asymptomatic,F,36,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Imported case,Confirmed
+1303,08/07/2020,Asymptomatic,F,36,Pamela Youde Nethersole Eastern Hospital,Discharged,HK resident,Imported case,Confirmed
 1304,08/07/2020,04/07/2020,F,41,Tuen Mun Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1305,08/07/2020,05/07/2020,M,64,United Christian Hospital,Hospitalised,HK resident,Local case,Confirmed
 1306,08/07/2020,06/07/2020,M,92,Queen Elizabeth Hospital,Hospitalised,HK resident,Local case,Confirmed
@@ -1320,12 +1320,12 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1319,08/07/2020,03/07/2020,M,31,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Local case,Confirmed
 1320,08/07/2020,Asymptomatic,M,43,Princess Margaret Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1321,08/07/2020,06/07/2020,F,57,United Christian Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1322,08/07/2020,03/07/2020,M,71,United Christian Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
+1322,08/07/2020,03/07/2020,M,71,United Christian Hospital,Hospitalised,HK resident,Local case,Confirmed
 1323,08/07/2020,07/07/2020,M,70,Tuen Mun Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1324,08/07/2020,07/07/2020,M,59,Princess Margaret Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1325,09/07/2020,06/07/2020,M,54,Ruttonjee Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1326,09/07/2020,Asymptomatic,M,42,Pamela Youde Nethersole Eastern Hospital,Discharged,Unknown,Imported case,Confirmed
-1327,09/07/2020,Asymptomatic,M,52,Prince of Wales Hospital,Hospitalised,HK resident,Imported case,Confirmed
+1327,09/07/2020,Asymptomatic,M,52,Prince of Wales Hospital,Discharged,HK resident,Imported case,Confirmed
 1328,09/07/2020,Asymptomatic,F,42,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Imported case,Confirmed
 1329,09/07/2020,06/07/2020,M,58,Kwong Wah Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1330,09/07/2020,Asymptomatic,M,0,Princess Margaret Hospital,Hospitalised,HK resident,Imported case,Confirmed
@@ -1376,13 +1376,13 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1375,10/07/2020,07/07/2020,F,13,Tuen Mun Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1376,10/07/2020,07/07/2020,F,41,United Christian Hospital,Hospitalised,HK resident,Local case,Confirmed
 1377,10/07/2020,06/07/2020,M,36,Ruttonjee Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1378,10/07/2020,Asymptomatic,M,7,Prince of Wales Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
+1378,10/07/2020,Asymptomatic,M,7,Prince of Wales Hospital,Discharged,HK resident,Epidemiologically linked with local case,Confirmed
 1379,10/07/2020,Asymptomatic,F,70,Ruttonjee Hospital,Discharged,HK resident,Epidemiologically linked with local case,Confirmed
 1380,10/07/2020,Asymptomatic,F,56,Princess Margaret Hospital,Discharged,HK resident,Epidemiologically linked with local case,Confirmed
 1381,10/07/2020,09/07/2020,F,19,Prince of Wales Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1382,10/07/2020,Asymptomatic,F,22,Pamela Youde Nethersole Eastern Hospital,Discharged,HK resident,Epidemiologically linked with local case,Confirmed
 1383,10/07/2020,08/07/2020,F,21,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1384,10/07/2020,Asymptomatic,F,89,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
+1384,10/07/2020,Asymptomatic,F,89,Pamela Youde Nethersole Eastern Hospital,Discharged,HK resident,Epidemiologically linked with local case,Confirmed
 1385,10/07/2020,09/07/2020,F,28,Princess Margaret Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1386,10/07/2020,Asymptomatic,F,44,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1387,10/07/2020,Asymptomatic,F,12,Prince of Wales Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
@@ -1395,7 +1395,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1394,10/07/2020,05/07/2020,F,39,Princess Margaret Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1395,10/07/2020,08/07/2020,M,86,Queen Mary Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1396,10/07/2020,08/07/2020,M,64,Prince of Wales Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
-1397,10/07/2020,07/07/2020,M,40,United Christian Hospital,Hospitalised,HK resident,Local case,Confirmed
+1397,10/07/2020,07/07/2020,M,40,United Christian Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1398,10/07/2020,07/07/2020,M,24,Queen Elizabeth Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
 1399,10/07/2020,09/07/2020,M,41,Pamela Youde Nethersole Eastern Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1400,10/07/2020,09/07/2020,M,47,Queen Elizabeth Hospital,Hospitalised,HK resident,Epidemiologically linked with local case,Confirmed
@@ -1413,7 +1413,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1412,11/07/2020,Pending,M,26,Tuen Mun Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1413,11/07/2020,Not applicable,M,55,Not applicable,No admission,Unknown,Imported case,Confirmed
 1414,11/07/2020,05/07/2020,F,22,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
-1415,11/07/2020,Asymptomatic,F,37,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1415,11/07/2020,Asymptomatic,F,37,Pamela Youde Nethersole Eastern Hospital,Discharged,HK Resident,Local case,Confirmed
 1416,11/07/2020,09/07/2020,M,29,Prince of Wales Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1417,11/07/2020,Asymptomatic,F,29,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1418,11/07/2020,08/07/2020,F,26,Tuen Mun Hospital,Hospitalised,Unknown,Imported case,Confirmed
@@ -1458,7 +1458,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1457,12/07/2020,11/07/2020,F,40,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1458,12/07/2020,Asymptomatic,F,73,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1459,12/07/2020,Asymptomatic,M,20,Yan Chai Hospital,Hospitalised,HK Resident,Imported case,Confirmed
-1460,12/07/2020,Asymptomatic,M,30,Ruttonjee Hospital,Hospitalised,HK Resident,Imported case,Confirmed
+1460,12/07/2020,Asymptomatic,M,30,Ruttonjee Hospital,Discharged,HK Resident,Imported case,Confirmed
 1461,12/07/2020,Asymptomatic,F,7,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1462,12/07/2020,Asymptomatic,M,21,United Christian Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1463,12/07/2020,07/07/2020,M,82,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
@@ -1498,7 +1498,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1497,13/07/2020,09/07/2020,M,75,Prince of Wales Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1498,13/07/2020,11/07/2020,F,68,Tuen Mun Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1499,13/07/2020,Asymptomatic,M,29,Pamela Youde Nethersole Eastern Hospital,Hospitalised,Unknown,Imported case,Confirmed
-1500,13/07/2020,Not applicable,M,19,Not applicable,No admission,Unknown,Imported case,Confirmed
+1500,13/07/2020,Asymptomatic,M,19,Pamela Youde Nethersole Eastern Hospital,Hospitalised,Unknown,Imported case,Confirmed
 1501,13/07/2020,Asymptomatic,F,59,Tseung Kwan O Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1502,13/07/2020,Asymptomatic,M,0,Prince of Wales Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1503,13/07/2020,Asymptomatic,F,5,Prince of Wales Hospital,Hospitalised,HK Resident,Imported case,Confirmed
@@ -1591,17 +1591,17 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1590,16/07/2020,09/07/2020,F,41,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1591,16/07/2020,09/07/2020,M,54,United Christian Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1592,16/07/2020,Asymptomatic,F,13,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
-1593,16/07/2020,Asymptomatic,M,49,Pending,Pending admission,HK Resident,Local case,Confirmed
+1593,16/07/2020,Asymptomatic,M,49,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1594,16/07/2020,Asymptomatic,M,45,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1595,16/07/2020,Asymptomatic,M,40,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1596,16/07/2020,08/07/2020,M,28,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1597,16/07/2020,Asymptomatic,F,49,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1598,16/07/2020,08/07/2020,M,51,Queen Elizabeth Hospital,Hospitalised,HK Resident,Local case,Confirmed
-1599,16/07/2020,12/07/2020,F,68,Pending,Pending admission,HK Resident,Local case,Confirmed
+1599,16/07/2020,12/07/2020,F,68,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1600,16/07/2020,Asymptomatic,M,27,Princess Margaret Hospital,Hospitalised,Unknown,Imported case,Confirmed
-1601,16/07/2020,Asymptomatic,F,73,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1601,16/07/2020,Asymptomatic,F,73,Princess Margaret Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1602,16/07/2020,13/07/2020,F,64,Queen Elizabeth Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
-1603,16/07/2020,12/07/2020,F,60,Pending,Pending admission,HK Resident,Local case,Confirmed
+1603,16/0了7/2020,12/07/2020,F,60,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1604,16/07/2020,10/07/2020,F,51,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1605,16/07/2020,10/07/2020,M,37,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1606,16/07/2020,14/07/2020,M,57,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
@@ -1609,7 +1609,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1608,16/07/2020,09/07/2020,F,62,Tseung Kwan O Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1609,16/07/2020,Asymptomatic,F,38,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1610,16/07/2020,11/07/2020,M,51,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Local case,Confirmed
-1611,16/07/2020,07/07/2020,F,49,Pending,Pending admission,HK Resident,Local case,Confirmed
+1611,16/07/2020,07/07/2020,F,49,Princess Margaret Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1612,16/07/2020,10/07/2020,M,94,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1613,16/07/2020,10/07/2020,M,70,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1614,16/07/2020,13/07/2020,F,66,Ruttonjee Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
@@ -1631,7 +1631,7 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1630,16/07/2020,13/07/2020,F,62,Queen Elizabeth Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1631,16/07/2020,12/07/2020,M,59,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1632,16/07/2020,14/07/2020,F,54,Caritas Medical Centre,Hospitalised,HK Resident,Local case,Confirmed
-1633,16/07/2020,13/07/2020,M,49,Pending,Pending admission,HK Resident,Local case,Confirmed
+1633,16/07/2020,13/07/2020,M,49,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1634,16/07/2020,14/07/2020,F,70,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1635,16/07/2020,13/07/2020,M,45,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1636,16/07/2020,13/07/2020,M,37,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
@@ -1647,11 +1647,69 @@ Case no.,Report date,Date of onset,Gender,Age,Name of hospital admitted,Hospital
 1646,16/07/2020,14/07/2020,F,25,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
 1647,16/07/2020,14/07/2020,F,46,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1648,16/07/2020,14/07/2020,F,32,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
-1649,16/07/2020,11/07/2020,M,74,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1649,16/07/2020,11/07/2020,M,74,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1650,16/07/2020,15/07/2020,M,61,Princess Margaret Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1651,16/07/2020,11/07/2020,M,63,Kwong Wah Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1652,16/07/2020,13/07/2020,M,55,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
 1653,16/07/2020,14/07/2020,F,39,Yan Chai Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1654,16/07/2020,15/07/2020,F,31,Princess Margaret Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
-1655,16/07/2020,14/07/2020,M,43,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1655,16/07/2020,14/07/2020,M,43,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
 1656,16/07/2020,14/07/2020,M,60,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1657,17/07/2020,08/07/2020,F,43,Caritas Medical Centre,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1658,17/07/2020,01/07/2020,F,43,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1659,17/07/2020,15/07/2020,M,57,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1660,17/07/2020,13/07/2020,M,71,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1661,17/07/2020,15/07/2020,M,42,Caritas Medical Centre,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1662,17/07/2020,07/07/2020,F,78,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1663,17/07/2020,09/07/2020,F,48,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1664,17/07/2020,08/07/2020,F,24,United Christian Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1665,17/07/2020,11/07/2020,M,37,Pending,Pending admission,HK Resident,Local case,Confirmed
+1666,17/07/2020,10/07/2020,F,36,United Christian Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1667,17/07/2020,13/07/2020,F,47,Caritas Medical Centre,Hospitalised,HK resident,Local case,Confirmed
+1668,17/07/2020,13/07/2020,F,51,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1669,17/07/2020,Asymptomatic,M,59,North District Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1670,17/07/2020,Pending,M,31,Pending,Pending admission,Unknown,Imported case,Confirmed
+1671,17/07/2020,15/07/2020,F,52,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1672,17/07/2020,12/07/2020,M,46,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1673,17/07/2020,11/07/2020,F,44,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1674,17/07/2020,Asymptomatic,M,30,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
+1675,17/07/2020,Asymptomatic,F,20,Pending,Pending admission,HK Resident,Imported case,Confirmed
+1676,17/07/2020,Asymptomatic,F,21,Pending,Pending admission,HK Resident,Imported case,Confirmed
+1677,17/07/2020,Asymptomatic,F,80,Tuen Mun Hospital,Hospitalised,HK Resident,Imported case,Confirmed
+1678,17/07/2020,Asymptomatic,M,38,Tseung Kwan O Hospital,Hospitalised,HK Resident,Imported case,Confirmed
+1679,17/07/2020,12/07/2020,M,80,Queen Elizabeth Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1680,17/07/2020,13/07/2020,M,58,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1681,17/07/2020,15/07/2020,F,55,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1682,17/07/2020,Asymptomatic,M,5,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1683,17/07/2020,16/07/2020,M,66,Alice Ho Miu Ling Nethersole Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1684,17/07/2020,Asymptomatic,M,27,Pending,Pending admission,HK Resident,Imported case,Confirmed
+1685,17/07/2020,01/07/2020,F,57,Tuen Mun Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1686,17/07/2020,15/07/2020,F,69,Tuen Mun Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1687,17/07/2020,14/07/2020,M,66,Kwong Wah Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1688,17/07/2020,16/07/2020,M,79,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1689,17/07/2020,16/07/2020,F,73,Queen Elizabeth Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1690,17/07/2020,15/07/2020,F,67,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1691,17/07/2020,15/07/2020,F,44,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1692,17/07/2020,10/07/2020,M,33,Pending,Pending admission,HK Resident,Local case,Confirmed
+1693,17/07/2020,14/07/2020,M,61,Prince of Wales Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1694,17/07/2020,12/07/2020,F,41,North District Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1695,17/07/2020,10/07/2020,F,46,Queen Elizabeth Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1696,17/07/2020,Asymptomatic,F,25,Pending,Pending admission,HK Resident,Imported case,Confirmed
+1697,17/07/2020,15/07/2020,F,18,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1698,17/07/2020,10/07/2020,M,55,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1699,17/07/2020,14/07/2020,F,40,Queen Mary Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1700,17/07/2020,16/07/2020,F,92,Ruttonjee Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1701,17/07/2020,16/07/2020,M,69,Ruttonjee Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1702,17/07/2020,11/07/2020,M,59,Pending,Pending admission,HK Resident,Epidemiologically linked with local case,Confirmed
+1703,17/07/2020,13/07/2020,F,55,Kwong Wah Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1704,17/07/2020,16/07/2020,F,46,Queen Elizabeth Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1705,17/07/2020,11/07/2020,F,73,Pamela Youde Nethersole Eastern Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1706,17/07/2020,15/07/2020,F,46,Princess Margaret Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1707,17/07/2020,Pending,F,71,Ruttonjee Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1708,17/07/2020,17/07/2020,F,56,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1709,17/07/2020,14/07/2020,F,7,Queen Mary Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1710,17/07/2020,11/07/2020,M,84,United Christian Hospital,Hospitalised,HK Resident,Local case,Confirmed
+1711,17/07/2020,16/07/2020,M,60,United Christian Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1712,17/07/2020,12/07/2020,M,46,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1713,17/07/2020,15/07/2020,F,65,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
+1714,17/07/2020,16/07/2020,F,29,Prince of Wales Hospital,Hospitalised,HK Resident,Epidemiologically linked with local case,Confirmed
