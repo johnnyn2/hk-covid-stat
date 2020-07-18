@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hk-covid-stat/precache-manifest.3b334d8e0264df283329957f3b1502e8.js"
+  "/hk-covid-stat/precache-manifest.95cdb5d3916e325cb8e07770b25bef95.js"
 );
 
 self.addEventListener('message', (event) => {
