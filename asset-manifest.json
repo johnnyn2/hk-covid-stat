@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/hk-covid-stat/static/css/main.5f361e03.chunk.css",
-    "main.js": "/hk-covid-stat/static/js/main.c542e042.chunk.js",
-    "main.js.map": "/hk-covid-stat/static/js/main.c542e042.chunk.js.map",
+    "main.js": "/hk-covid-stat/static/js/main.186c90c9.chunk.js",
+    "main.js.map": "/hk-covid-stat/static/js/main.186c90c9.chunk.js.map",
     "runtime-main.js": "/hk-covid-stat/static/js/runtime-main.df68e22c.js",
     "runtime-main.js.map": "/hk-covid-stat/static/js/runtime-main.df68e22c.js.map",
     "static/js/2.9ccabbac.chunk.js": "/hk-covid-stat/static/js/2.9ccabbac.chunk.js",
     "static/js/2.9ccabbac.chunk.js.map": "/hk-covid-stat/static/js/2.9ccabbac.chunk.js.map",
     "index.html": "/hk-covid-stat/index.html",
-    "precache-manifest.7748209353a3460302e6fb0ced7bf875.js": "/hk-covid-stat/precache-manifest.7748209353a3460302e6fb0ced7bf875.js",
+    "precache-manifest.1068c7f6925b5ad02930da76d0b3bf58.js": "/hk-covid-stat/precache-manifest.1068c7f6925b5ad02930da76d0b3bf58.js",
     "service-worker.js": "/hk-covid-stat/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/hk-covid-stat/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.9ccabbac.chunk.js.LICENSE.txt": "/hk-covid-stat/static/js/2.9ccabbac.chunk.js.LICENSE.txt",
@@ -30,6 +30,6 @@
     "static/js/runtime-main.df68e22c.js",
     "static/js/2.9ccabbac.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.c542e042.chunk.js"
+    "static/js/main.186c90c9.chunk.js"
   ]
 }
