@@ -67,7 +67,7 @@ export const Dashboard = (props) => {
                     <Button variant="contained" color="default" style={listButtonStyles} onClick={() => handleChangePage(PAGES.GUARANTINE_ORDERS)}>
                         {props.lang === 'cn' ? '根據《若干到港人士強制檢疫規例》（第599C章）新發出強制檢疫令的統計資料' : 'Statistics of newly issued quarantine orders under the Compulsory Quarantine of Certain Persons Arriving at Hong Kong Regulation (Cap. 599C)'}
                     </Button>
-                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：17/07/2020 19:34</div>
+                    <div style={{ marginTop: 20, textAlign: 'right' }}>{props.lang === 'cn' ? '本程式最後更新時間' : 'Application Last Updated Time'}：18/07/2020 14:15</div>
                     <ToggleButtonGroup
                         value={props.lang}
                         exclusive
