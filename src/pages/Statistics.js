@@ -116,11 +116,14 @@ export const Statisitcs = (props) => {
             let hasDate = false;
             let dataSortByDate = {};
             for (let i=0;i<csvData.columns.length;i++) {
-                if (csvData.columns[i].includes(props.lang === 'cn' ? '日期' : 'date')) {
+                if (csvData.columns[i].includes(props.lang === 'cn' ? '日期' : 'date') || csvData.columns[i].includes('Date')) {
                     dataSortByDate = data.sort((a,b) => compareDate(a, b, csvData.columns[i], 'ASC'));
                     hasDate = true;
                     break;
                 }
+            }
+            if (url.includes("enhanced")) {
+                dataSortByDate = data.sort((a,b) => b[props.lang ==='cn' ? '個案編號' : 'Case no.'] - a[props.lang === 'cn' ? '個案編號' : 'Case no.'])
             }
             if (hasDate) {
                 setState((prevState) => ({...prevState, data: dataSortByDate, columns, title, filteredData: dataSortByDate,}));
@@ -130,7 +133,8 @@ export const Statisitcs = (props) => {
             
             const sortingState = {};
             Object.keys(csvData.columns).forEach(column => {
-                sortingState[columns[column].title] = columns[column].title.includes(props.lang === 'cn' ? '日期' : 'date') ? 'DES' : 'ASC';
+                sortingState[columns[column].title] = columns[column].title.includes(props.lang === 'cn' ? '日期' : 'date') ||
+                    columns[column].title.includes(props.lang === 'cn' ? '個案編號' : 'Case no.') || columns[column].title.includes('Date') ? 'DES' : 'ASC';
             });
             setSortingState(sortingState);
             setTag(props.lang === 'cn' ? `共${csvData.length - 1}項資料` : `${csvData.length - 1} data in total`);
@@ -216,36 +220,36 @@ export const Statisitcs = (props) => {
         handleCloseMenu();
         if (sortingState[column] === 'ASC') {
             let sortedData = [];
-            if (column.includes(props.lang === 'cn' ? '日期' : 'date')) {
+            if (column.includes(props.lang === 'cn' ? '日期' : 'date') || column.includes('Date')) {
                 sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'ASC'))
             } else if (/^\d+$/.test(state.filteredData[0][column])) {
                 sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
             } else {
                 // sortedData = state.filteredData.sort((a,b) => b[column] - a[column]);
-                sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(b[column], a[column]));
+                sortedData = state.filteredData.sort((a,b) => new Intl.Collator(props.lang).compare(b[column], a[column]));
             }
             setState((prevState) => ({...prevState, filteredData: sortedData}));
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
-                if (new Intl.Collator('cn').compare(key, column) === 0) {
+                if (new Intl.Collator(props.lang).compare(key, column) === 0) {
                     newSortingState[key] = 'DES';
                 }
             })
             setSortingState(newSortingState)
         } else {
             let sortedData = [];
-            if (column.includes(props.lang === 'cn' ? '日期' : 'date')) {
+            if (column.includes(props.lang === 'cn' ? '日期' : 'date') || column.includes('Date')) {
                 sortedData = state.filteredData.sort((a,b) => compareDate(a, b, column, 'DES'))
             } else if (/^\d+$/.test(state.filteredData[0][column])) {
                 sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
             } else {
                 // sortedData = state.filteredData.sort((a,b) => a[column] - b[column]); 
-                sortedData = state.filteredData.sort((a,b) => new Intl.Collator('cn').compare(a[column], b[column]));
+                sortedData = state.filteredData.sort((a,b) => new Intl.Collator(props.lang).compare(a[column], b[column]));
             }
             setState((prevState) => ({...prevState, filteredData: sortedData}));
             const newSortingState = {...sortingState};
             Object.keys(newSortingState).forEach((key) => {
-                if (new Intl.Collator('cn').compare(key, column) === 0) {
+                if (new Intl.Collator(props.lang).compare(key, column) === 0) {
                     newSortingState[key] = 'ASC';
                 }
             })
