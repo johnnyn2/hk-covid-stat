@@ -142,9 +142,8 @@ export const Statisitcs = (props) => {
             setTag(props.lang === 'cn' ? `共${csvData.length - 1}項資料` : `${csvData.length - 1} data in total`);
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: props.lang === 'cn' ? '完成' : 'Done'}))
+            window.addEventListener("scroll", trackScrolling);
         })
-
-        window.addEventListener("scroll", trackScrolling);
 
         return () => window.removeEventListener("scroll", trackScrolling)
     },[])
