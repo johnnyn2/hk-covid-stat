@@ -167,7 +167,11 @@ export const Statisitcs = (props) => {
         const {searchKey} = state;
         if (searchKey === "") {
             handleReset();
-            setTag(props.lang === 'cn' ? `共${state.filteredData.length}項資料` : `${state.filteredData.length} data in total`);
+            setState((prevState) => {
+                setTag(props.lang === 'cn' ? `共${prevState.data.length}項資料` : `${prevState.data.length} data in total`);
+                return {...prevState};
+            })
+            
             setSnackState({
                 open: true,
                 severity: "success",
@@ -175,18 +179,20 @@ export const Statisitcs = (props) => {
             })
             return;
         };
-        const searchResult = state.data.filter(row => {
-            const keys = Object.keys(row);
-            if (keys.includes(searchKey)) return true;
-            let contains = false;
-
-            const matchedKeys = keys.filter(key => {
-                return row[key].includes(searchKey);
-            });
-            return matchedKeys.length > 0;
-        })
-        setState((prevState) => ({...prevState, filteredData: searchResult, displayItems: searchResult.slice(0, prevState.displayItems.length)}));
-        setTag(props.lang === 'cn' ? `共${state.data.length}項資料，${searchResult.length}個結果。` : `${state.data.length} data in total. ${searchResult.length} search result(s).`);
+        setState((prevState) => {
+            const searchResult = prevState.data.filter(row => {
+                const keys = Object.keys(row);
+                if (keys.includes(searchKey)) return true;
+                let contains = false;
+    
+                const matchedKeys = keys.filter(key => {
+                    return row[key].includes(searchKey);
+                });
+                return matchedKeys.length > 0;
+            })
+            setTag(props.lang === 'cn' ? `共${state.data.length}項資料，${searchResult.length}個結果。` : `${state.data.length} data in total. ${searchResult.length} search result(s).`);
+            return {...prevState, filteredData: searchResult, displayItems: searchResult.slice(0, 20)}
+        });
         setSnackState({
             open: true,
             severity: "success",
@@ -195,7 +201,10 @@ export const Statisitcs = (props) => {
     }
 
     const handleReset = () => {
-        setState((prevState) => ({...prevState, searchKey: '', filteredData: prevState.data, displayItems: prevState.data.slice(0, prevState.displayItems.length)}));
+        setState((prevState) => {
+            console.log('reset: ', prevState);
+            return {...prevState, searchKey: '', filteredData: prevState.data, displayItems: prevState.data.slice(0, 20)}
+        });
         setTag(props.lang === 'cn' ? `共${state.data.length}項資料` : `${state.data.length} data in total`)
     }
 
