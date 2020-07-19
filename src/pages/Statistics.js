@@ -113,7 +113,7 @@ export const Statisitcs = (props) => {
         setIsLoading(true);
         setSnackState((prevSnack) => ({...prevSnack, open: true, severity: 'info', message: props.lang === 'cn' ? '加載中...' : 'Loading...'}))
         csv(url).then(csvData => {
-            const data = csvData.filter((row, i) => i !== csvData.length-1);
+            const data = csvData;
             const columns = csvData.columns.map(col => ({title: col, field: col}));
             let hasDate = false;
             let dataSortByDate = {};
@@ -124,6 +124,8 @@ export const Statisitcs = (props) => {
                     break;
                 }
             }
+            console.log('data: ', data);
+            console.log('csvData: ', csvData)
             if (url.includes("enhanced")) {
                 dataSortByDate = data.sort((a,b) => b[props.lang ==='cn' ? '個案編號' : 'Case no.'] - a[props.lang === 'cn' ? '個案編號' : 'Case no.'])
             }
@@ -139,7 +141,7 @@ export const Statisitcs = (props) => {
                     columns[column].title.includes(props.lang === 'cn' ? '個案編號' : 'Case no.') || columns[column].title.includes('Date') ? 'DES' : 'ASC';
             });
             setSortingState(sortingState);
-            setTag(props.lang === 'cn' ? `共${csvData.length - 1}項資料` : `${csvData.length - 1} data in total`);
+            setTag(props.lang === 'cn' ? `共${data.length}項資料` : `${data.length} data in total`);
             setIsLoading(false);
             setSnackState((prevSnack) => ({...prevSnack, severity: 'success', message: props.lang === 'cn' ? '完成' : 'Done'}))
             window.addEventListener("scroll", trackScrolling);
