@@ -336,7 +336,7 @@ export const Statisitcs = (props) => {
     if (state.filteredData !== null && state.columns !== null) {
         result = state.displayItems.map((row, idx) => {
             const keys = Object.keys(row);
-            const tableContent = keys.map(k => <tr><td style={{minWidth: 50}}>{k}</td><td>{row[k]}</td></tr>)
+            const tableContent = keys.map(k => <tr><td style={{minWidth: 60, maxWidth: 200, wordBreak: 'break-word'}}>{k}</td><td>{row[k]}</td></tr>)
             return (
             <div key={idx} style={{backgroundColor: 'white', color: 'rgba(0, 0, 0, 0.87)', borderRadius: '10px', border: '1px solid #E7E7E7', margin: 10}}>
                 <table style={{width: 300, textAlign: 'left', padding: 30}}>
