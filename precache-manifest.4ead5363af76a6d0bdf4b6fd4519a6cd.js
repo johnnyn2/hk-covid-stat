@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c0a883a051b381eeb07c72f38c6448c6",
+    "revision": "bf23a1cb3c44e59860e65127876aa646",
     "url": "/hk-covid-stat/index.html"
   },
   {
-    "revision": "ec4f9e599c0831edbee1",
+    "revision": "8fb59964ed48fd8916c8",
     "url": "/hk-covid-stat/static/css/main.5f361e03.chunk.css"
   },
   {
@@ -16,48 +16,48 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hk-covid-stat/static/js/2.9ccabbac.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ec4f9e599c0831edbee1",
-    "url": "/hk-covid-stat/static/js/main.8b334341.chunk.js"
+    "revision": "8fb59964ed48fd8916c8",
+    "url": "/hk-covid-stat/static/js/main.830b4af2.chunk.js"
   },
   {
     "revision": "f99639308432e1907706",
     "url": "/hk-covid-stat/static/js/runtime-main.df68e22c.js"
   },
   {
-    "revision": "f23c70b64ec57f7584f373327ce048f1",
-    "url": "/hk-covid-stat/static/media/building_list_chi.f23c70b6.csv"
+    "revision": "1d710b3e6fbec26b080f21e15c18317b",
+    "url": "/hk-covid-stat/static/media/building_list_chi.1d710b3e.csv"
   },
   {
-    "revision": "ad02d00e07b1633abdf853b52d998f53",
-    "url": "/hk-covid-stat/static/media/building_list_eng.ad02d00e.csv"
+    "revision": "022fec33b27677483c524dcd0894c305",
+    "url": "/hk-covid-stat/static/media/building_list_eng.022fec33.csv"
   },
   {
-    "revision": "4344a1c1b531ae4ff55fb2d12a3e6603",
-    "url": "/hk-covid-stat/static/media/enhanced_sur_covid_19_chi.4344a1c1.csv"
+    "revision": "eec1b07bb3032e4642af928a13e25062",
+    "url": "/hk-covid-stat/static/media/enhanced_sur_covid_19_chi.eec1b07b.csv"
   },
   {
-    "revision": "79da2a247c57bded641e5d6e48e27f75",
-    "url": "/hk-covid-stat/static/media/enhanced_sur_covid_19_eng.79da2a24.csv"
+    "revision": "e4f9495b45abf32d2e54e2558763c5bc",
+    "url": "/hk-covid-stat/static/media/enhanced_sur_covid_19_eng.e4f9495b.csv"
   },
   {
-    "revision": "4cf49f1541c115778cd12097554121a6",
-    "url": "/hk-covid-stat/static/media/flights_trains_list_chi.4cf49f15.csv"
+    "revision": "b21b6627da26ac8b97e93d2ad0291a25",
+    "url": "/hk-covid-stat/static/media/flights_trains_list_chi.b21b6627.csv"
   },
   {
-    "revision": "3ad3e374456f7d25709ad81d8dfd6135",
-    "url": "/hk-covid-stat/static/media/flights_trains_list_eng.3ad3e374.csv"
+    "revision": "f7edb929cbdf1cd7f525a0f2d7971702",
+    "url": "/hk-covid-stat/static/media/flights_trains_list_eng.f7edb929.csv"
   },
   {
     "revision": "0b6aa28c0628705984289874054b80ec",
     "url": "/hk-covid-stat/static/media/home_confinees_tier2_building_list.0b6aa28c.csv"
   },
   {
-    "revision": "a9243d22323c8c5645ce81ce4092bb7b",
-    "url": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_chi.a9243d22.csv"
+    "revision": "0a81cffc8f17eb23744b5810f016da5c",
+    "url": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_chi.0a81cffc.csv"
   },
   {
-    "revision": "03f06e3e2a3b6fa635c2cdf5784a2555",
-    "url": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_eng.03f06e3e.csv"
+    "revision": "d9583ba71134427ce25a7d8258f1eab2",
+    "url": "/hk-covid-stat/static/media/latest_situation_of_reported_cases_covid_19_eng.d9583ba7.csv"
   },
   {
     "revision": "746f21134fbbdb69b72c446561a21aae",
